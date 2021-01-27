@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Square from './Suare';
-import { GameContext } from './Game.js';
+import { GameContext } from './TTTStore';
 
 const Board = () => {
-    const renderSquare = (i, squares, handleClick) => {
+
+    const renderSquare = (i, squares ) => {
         return (
             <Square
+                idx={i}
                 value={squares[i]}
-                onClick={() => handleClick(i)}
             />
         )
     }
@@ -15,22 +16,22 @@ const Board = () => {
     return (
         <GameContext.Consumer>
             {
-                ({ squares, handleClick }) => (
+                ({ state }) => (
                     <>
                         <div className="board-row">
-                            {renderSquare(0, squares, handleClick)}
-                            {renderSquare(1, squares, handleClick)}
-                            {renderSquare(2, squares, handleClick)}
+                            {renderSquare(0, state.squares)}
+                            {renderSquare(1, state.squares)}
+                            {renderSquare(2, state.squares)}
                         </div>
                         <div className="board-row">
-                            {renderSquare(3, squares, handleClick)}
-                            {renderSquare(4, squares, handleClick)}
-                            {renderSquare(5, squares, handleClick)}
+                            {renderSquare(3, state.squares)}
+                            {renderSquare(4, state.squares)}
+                            {renderSquare(5, state.squares)}
                         </div>
                         <div className="board-row">
-                            {renderSquare(6, squares, handleClick)}
-                            {renderSquare(7, squares, handleClick)}
-                            {renderSquare(8, squares, handleClick)}
+                            {renderSquare(6, state.squares)}
+                            {renderSquare(7, state.squares)}
+                            {renderSquare(8, state.squares)}
                         </div>
                     </>
 

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { GameContext } from "./TTTStore";
 
 const Header = () => {
+    const {status} = useContext(GameContext);
+
     return (
         <div>
-            
+           <div className="header">
+                <p>{status}</p>
+            </div> 
         </div>
     );
 }

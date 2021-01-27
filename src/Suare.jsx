@@ -1,16 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { GameContext } from './TTTStore';
 
 const Suare = (props) => {
-    return(
-        
+  const {dispatch} = useContext(GameContext);
+  const handleOnClick = () => {
+    dispatch({ type: 'SQUARE_CLICK', payload: props.idx });
+  }
+
+  return (
     <button
       className="square"
-      onClick={props.onClick}
+      onClick={handleOnClick}
     >
       {props.value}
     </button>
 
-    )
+  )
 }
 
 export default Suare;
